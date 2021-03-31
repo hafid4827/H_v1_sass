@@ -1,0 +1,214 @@
+.container-100 {
+  margin: 0 auto;
+  max-width: 100rem;
+}
+
+.container-120 {
+  margin: 0 auto;
+  max-width: 120rem;
+}
+
+.container-140 {
+  margin: 0 auto;
+  max-width: 140rem;
+}
+
+.header {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+.header .header-cont {
+  height: 8rem;
+  display: flex;
+  justify-content: space-between;
+}
+.header .header-cont__nav {
+  z-index: 1000;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.header .title-page {
+  font-size: 4rem;
+  font-weight: 500;
+  color: #02a589;
+}
+.header .nav {
+  background-color: #ffffff;
+  margin-left: 5rem;
+  width: 50rem;
+}
+.header .nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header .nav ul .nav-list {
+  font-size: 1.5rem;
+  letter-spacing: 0.25rem;
+  text-transform: capitalize;
+  position: relative;
+  font-weight: 500;
+}
+.header .nav ul .nav-list .nav-link {
+  color: #B2B2B2;
+  transition: 0.3s ease-in-out;
+}
+.header .nav ul .nav-list .nav-link:hover {
+  color: #000000;
+}
+.header .nav ul .nav-list:before {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 0%;
+  height: 0.3rem;
+  transition: 0.5s ease-in-out;
+  background: linear-gradient(90deg, rgba(0, 255, 166, 0.3) 0%, #46ee86b3 100%);
+}
+.header .nav ul .nav-list:hover:before {
+  width: 100%;
+}
+
+.item-adic {
+  z-index: 1000;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item-adic .adic-form__search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.item-adic .adic-form__search .adic-cont__input {
+  position: relative;
+}
+.item-adic .adic-form__search label {
+  cursor: pointer;
+  margin-right: 1rem;
+}
+.item-adic .adic-form__search input {
+  display: block;
+  width: 0rem;
+  transition: 0.3s ease-in-out;
+}
+.item-adic .adic-form__search input::placeholder {
+  text-transform: capitalize;
+}
+.item-adic .adic-form__search input:focus {
+  width: 20rem;
+  margin-right: 5rem;
+}
+.item-adic .adic-form__search .adict-line__decoration {
+  content: "";
+  width: 0rem;
+  right: 0;
+  bottom: -0.3rem;
+  position: absolute;
+  height: 0.3rem;
+  background: linear-gradient(90deg, rgba(0, 255, 166, 0.3) 0%, #46ee86b3 100%);
+  display: block;
+  transition: 0.3s ease-in-out;
+}
+.item-adic .adic-form__search input:focus + .adict-line__decoration {
+  width: 20rem;
+  margin-right: 5rem;
+}
+.item-adic .adic-form__search .adict-button {
+  overflow: hidden;
+  background: linear-gradient(119deg, #00ffa6 0%, #00d474 100%);
+  text-transform: capitalize;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  width: 0rem;
+  height: auto;
+  padding: 0rem;
+  position: absolute;
+  bottom: 0;
+  top: -0.5rem;
+  right: -1rem;
+  transition: 0.3s ease-in-out;
+  z-index: 100;
+}
+.item-adic .adic-form__search input:focus ~ .adict-button {
+  width: 5rem;
+}
+.item-adic .adic-form__search .adict-button:hover {
+  background: linear-gradient(90deg, rgba(0, 255, 166, 0.3) 0%, #46ee86b3 100%);
+}
+.item-adic .line-sep {
+  display: block;
+  width: 0.2rem;
+  height: 2.6rem;
+  margin: 0rem 2rem;
+  background-color: #B2B2B2;
+}
+.item-adic .adic-selec__lang {
+  border: none;
+  text-transform: uppercase;
+  border-radius: 0.5rem;
+  outline: none;
+  cursor: pointer;
+}
+.item-adic .login {
+  overflow: hidden;
+  background: #e8f7f6;
+  text-transform: capitalize;
+  border-radius: 0.5rem;
+  color: #02a589;
+  width: 8rem;
+  height: 2.7rem;
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  font-size: 1.25rem;
+  letter-spacing: 0.18rem;
+  margin-left: 1rem;
+  transform: scale(1);
+  transition: 0.3s ease-in-out;
+  font-weight: 900;
+}
+.item-adic .login:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, rgba(0, 255, 166, 0.3) 0%, #46ee86b3 100%);
+  color: #ffffff;
+}
+
+.hero-main {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.hero-main .hero-cont {
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hero-main .hero-cont .hero-info {
+  max-width: 45rem;
+  height: auto;
+}
+.hero-main .hero-cont .hero-info h1 {
+  font-size: 4vmax;
+  margin: 0;
+  color: #02a589;
+  text-transform: capitalize;
+}
+.hero-main .hero-cont .hero-info p {
+  font-size: 1.2vmax;
+  letter-spacing: 0.2rem;
+  line-height: 2.5rem;
+  color: #858585;
+}
+.hero-main .hero-draw {
+  width: 60rem;
+  height: 60rem;
+}
+
+/*# sourceMappingURL=index.css.map */

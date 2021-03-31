@@ -1,0 +1,43 @@
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+html body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+ul {
+  padding: 0;
+}
+ul li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+}
+
+button {
+  border: none;
+  background: none;
+  display: inline-block;
+  outline: none;
+  cursor: pointer;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
+span {
+  display: inline-block;
+}
+
+/*# sourceMappingURL=general.css.map */
