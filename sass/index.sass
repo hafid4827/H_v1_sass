@@ -31,9 +31,39 @@ $sizeContainer: 100, 120, 140
     height: $hg
     padding: $pdd
 
+@mixin circle_animation($statement_value:false)
+    position: absolute
+    bottom: 0
+    top: 0
+    margin: auto 0
+    width: 60rem
+    height: 60rem
+    z-index: -1000
+    @if $statement_value
+        left: -15rem
+    @else
+        right: -15rem
+    path
+        animation: 20s ease-in-out infinite circle_animation_general
+
+@keyframes circle_animation_general
+    0%
+        d: path('M60.3,-27.3C65.3,-4.1,47.7,18.7,26.7,33.2C5.6,47.7,-19,53.8,-32,44.3C-45,34.8,-46.4,9.6,-39.1,-16.6C-31.9,-42.9,-15.9,-70.3,5.9,-72.2C27.6,-74.1,55.3,-50.5,60.3,-27.3Z')
+    25%
+        d: path('M66,-23.2C72.8,-0.6,56.7,27.6,32.5,45.4C8.2,63.2,-24.2,70.5,-44.6,56.8C-65,43,-73.5,8.2,-64,-18C-54.6,-44.2,-27.3,-61.9,1.2,-62.2C29.6,-62.6,59.3,-45.8,66,-23.2Z')
+    50%
+        d: path('M41.1,-9.8C48.2,8.3,45.2,33.3,30.3,44.9C15.3,56.5,-11.7,54.9,-27,42.5C-42.3,30.1,-46,7,-39.6,-10.3C-33.1,-27.6,-16.6,-39.1,0.2,-39.2C17,-39.3,34.1,-27.9,41.1,-9.8Z')
+    75%
+        d: path('M68.2,-17.3C76.6,3.7,63.5,36.6,40.7,52.2C17.9,67.9,-14.6,66.3,-31.9,51.9C-49.1,37.4,-51.2,10.1,-43.4,-10.2C-35.5,-30.5,-17.8,-43.7,6.1,-45.6C29.9,-47.6,59.8,-38.4,68.2,-17.3Z')
+
+// botones redirecciones
+.who-we__btn
+    font-size: 1.5rem
+    color: $color_text_green
+    text-transform: capitalize
 // general styles
 .header
-    height: 100vh
+    height: 75vh
     width: 100%
     position: relative
     .header-cont
@@ -61,19 +91,19 @@ $sizeContainer: 100, 120, 140
                 .nav-link
                     color: $color_grey
                     transition: 0.3s ease-in-out
-                .nav-link:hover
-                    color: #000000
-            .nav-list:before
-                content: ''
-                position: absolute
-                bottom: -0.5rem
-                left: 0
-                width: 0%
-                height: 0.3rem
-                transition: 0.5s ease-in-out
-                background: $color-green_and_blue_gradient
-            .nav-list:hover:before
-                width: 100%
+                    &:hover
+                        color: #000000
+                &:before
+                    content: ''
+                    position: absolute
+                    bottom: -0.5rem
+                    left: 0
+                    width: 0%
+                    height: 0.3rem
+                    transition: 0.5s ease-in-out
+                    background: $color-green_and_blue_gradient
+                &:hover:before
+                    width: 100%
 
 // segundo item del nav buscador
 .item-adic
@@ -91,11 +121,11 @@ $sizeContainer: 100, 120, 140
             display: block
             width: 0rem
             transition: 0.3s ease-in-out
-        input::placeholder
-            text-transform: capitalize
-        input:focus
-            width: 20rem
-            margin-right: 5rem
+            &::placeholder
+                text-transform: capitalize
+            &:focus
+                width: 20rem
+                margin-right: 5rem
         .adict-line__decoration
             content: ''
             width: 0rem
@@ -117,10 +147,10 @@ $sizeContainer: 100, 120, 140
             right: -1rem
             transition: 0.3s ease-in-out
             z-index: 100
+            &:hover
+                background: $color-green_and_blue_gradient
         input:focus ~ .adict-button
             width: 5rem
-        .adict-button:hover
-            background: $color-green_and_blue_gradient
 
     // linea que separa
     .line-sep
@@ -145,10 +175,10 @@ $sizeContainer: 100, 120, 140
         transform: scale(1)
         transition: 0.3s ease-in-out
         font-weight: 900
-    .login:hover
-        transform: scale(1.05)
-        background: $color-green_and_blue_gradient
-        color: #ffffff
+        &:hover
+            transform: scale(1.05)
+            background: $color-green_and_blue_gradient
+            color: #ffffff
 
 // hero
 .hero-main
@@ -178,9 +208,9 @@ $sizeContainer: 100, 120, 140
                 font-size: 1.5vmax
                 transition: 0.3s ease-in-out
                 transform: scale(1)
-            .btn-get:hover
-                background: $color_text_green_1
-                transform: scale(1.03)
+                &:hover
+                    background: $color_text_green_1
+                    transform: scale(1.03)
     .hero-draw
         width: 60rem
         height: 60rem
@@ -196,11 +226,11 @@ $sizeContainer: 100, 120, 140
         grid-template-columns: repeat(3, 1fr)
         align-items: center
         .we-item__card
-            border-radius: 0.5rem
+            border-radius: 1rem
             background-color: #ffffff
+            box-shadow: $shadowStandar // temporal
             .we-item__info
                 @include flexGeneral(center, center, $TrueFalse: true)
-                box-shadow: $shadowStandar // temporal
                 height: 20rem
                 width: 18rem
                 .item-card__direct
@@ -211,23 +241,25 @@ $sizeContainer: 100, 120, 140
                         color: $color_text_green_1
                         text-transform: uppercase
                         text-align: center
-        .we-item__card:nth-child(1)
-            grid-row: 1/3
-            align-content: center
-        .we-item__card:nth-child(3)
-            grid-row: 1/3
-            grid-column: 3/4
-        .we-item__card:nth-child(4)
-            grid-column: 2/3
-            background-color: $color_text_green_1
-            .item-card__direct
-                i
-                    font-size: 4.5vmax
-                    color: #fff
-                h3
-                    color: #fff
-                    text-transform: uppercase
-                    text-align: center
+            &:nth-child(1)
+                grid-row: 1/3
+                align-content: center
+            &:nth-child(3)
+                grid-row: 1/3
+                grid-column: 3/4
+            &:nth-child(4)
+                grid-column: 2/3
+                background-color: $color_text_green_1
+                .item-card__direct
+                    i
+                        font-size: 4.5vmax
+                        color: #fff
+                    h3
+                        color: #fff
+                        text-transform: uppercase
+                        text-align: center
+    .circle-animation_1
+        @include circle_animation($statement_value:true)
     // segunda subseccion de la segunda seccion general
     .who-we
         .who-we__cont
@@ -243,30 +275,85 @@ $sizeContainer: 100, 120, 140
                 font-size: 1.7rem
                 color: $color_grey_1
 
-            .who-we__btn
-                font-size: 1.5rem
-                color: $color_text_green
-                text-transform: capitalize
-
-.circle-animation
-    position: absolute
-    left: -15rem
-    bottom: 0
-    top: 0
-    margin: auto 0
-    width: 60rem
-    height: 60rem
-    z-index: -1000
-    path
-        animation: 20s ease-in-out infinite circle_animation_general
-
-@keyframes circle_animation_general
-    0%
-        d: path('M60.3,-27.3C65.3,-4.1,47.7,18.7,26.7,33.2C5.6,47.7,-19,53.8,-32,44.3C-45,34.8,-46.4,9.6,-39.1,-16.6C-31.9,-42.9,-15.9,-70.3,5.9,-72.2C27.6,-74.1,55.3,-50.5,60.3,-27.3Z')
-    25%
-        d: path('M66,-23.2C72.8,-0.6,56.7,27.6,32.5,45.4C8.2,63.2,-24.2,70.5,-44.6,56.8C-65,43,-73.5,8.2,-64,-18C-54.6,-44.2,-27.3,-61.9,1.2,-62.2C29.6,-62.6,59.3,-45.8,66,-23.2Z')
-    50%
-        d: path('M41.1,-9.8C48.2,8.3,45.2,33.3,30.3,44.9C15.3,56.5,-11.7,54.9,-27,42.5C-42.3,30.1,-46,7,-39.6,-10.3C-33.1,-27.6,-16.6,-39.1,0.2,-39.2C17,-39.3,34.1,-27.9,41.1,-9.8Z')
-    75%
-        d: path('M68.2,-17.3C76.6,3.7,63.5,36.6,40.7,52.2C17.9,67.9,-14.6,66.3,-31.9,51.9C-49.1,37.4,-51.2,10.1,-43.4,-10.2C-35.5,-30.5,-17.8,-43.7,6.1,-45.6C29.9,-47.6,59.8,-38.4,68.2,-17.3Z')
-    
+// tercera seccion meet
+.meet
+    @include flexGeneral(space-between, center, $TrueFalse: true)
+    height: 70vh
+    position: relative
+    width: 100%
+    .meet-art
+        width: 50rem
+        h3
+            color: $color_title_blackLihgt
+            font-size: 2.5vmax
+            text-transform: capitalize
+        p
+            font-size: 1.7rem
+            color: $color_grey_1
+            line-height: 2.5rem
+    .meet-grid
+        @include gridGeneral($content: center, $TrueFalseGrid: false, $valueItemsGrid: center, $gap: 1rem)
+        grid-template-columns: repeat(2, 1fr)
+        grid-template-rows: repeat(2, 1fr)
+        gap: 1.5rem
+        .meet-item
+            .meet-item__card
+                box-shadow: $shadowStandar
+                border-radius: 1rem
+                padding: 2rem 2rem 0rem 2rem
+                height: 100%
+                .meet-perfil
+                    @include flexGeneral(center, center, $TrueFalse: true)
+                    flex-direction: column
+                    img,.meet-img__temp
+                        border-radius: 50%
+                        width: 10rem
+                        height: 10rem
+                    .meet-img__temp
+                        font-size: 5rem
+                        margin: 0
+                        text-align: center
+                        margin: auto 0
+                        height: auto
+                        width: 10rem
+                        padding: 2rem 1rem
+                        border-radius: 100%
+                    .meet-title__card
+                        font-size: 1.2rem
+                        text-transform: capitalize
+                        color: $color_grey_1
+                        width: 70%
+                        text-align: center
+                        margin: 0 auto
+                        margin-top: 2rem
+                    .meet-img__temp-1
+                        color: $color_text_green_1
+                        background-color: $color_text_green_light
+                    .meet-img__temp-2
+                        color: $color_general_yellow
+                        background-color: $color_general_yellow_light
+        .meet-item:nth-child(1)
+            grid-row: 1/3
+            align-self: center
+        // foooter social media
+        .meet-card__footer
+            @include flexGeneral(space-evenly, center, $TrueFalse: true)
+            margin-top: 1.5rem
+            padding: 1rem 0rem
+    .circle-animation_2
+        @include circle_animation($statement_value:false)
+    @for $var_icon from 0 through length($color_list_social_media) - 1
+        .i-icon-#{$var_icon + 1}
+            display: inline-block
+            border-radius: 1.7rem
+            font-size: 2.3rem
+            color: nth($color_list_social_media, 3 - $var_icon)
+            transform: scale(1)
+            transition: 0.3s ease-in-out
+            &:hover
+                transform: scale(1.1)
+// img foot section before
+.who-img-foot
+    width: 50rem
+    height: 50rem
+    margin-top: -14rem
